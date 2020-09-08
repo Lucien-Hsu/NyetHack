@@ -6,23 +6,26 @@ fun main(args: Array<String>) {
 
     //Aura 光環
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
-
     //判定健康狀態
     val healStatus = formatHealthStatus(healthPoints, isBlessed)
-
     //印出玩家狀態
     printPlayerStatus(auraColor, isBlessed, name, healStatus)
 
-    castFireball()
-
-
-
-    TODO("123")
-
+    //4.16 醉酒狀態報告
+    val drunkRate = castFireball()
+    val drunkType = when(drunkRate){
+        in 1..10 -> "tipsy"
+        in 11..20 -> "sloshed"
+        in 21..30 -> "soused"
+        in 31..40 -> "stewed"
+        in 41..50 -> "..t0aSt3d"
+        else -> "null"
+    }
+    println("\nDrunk Rate：" + drunkType)
 
     //判斷種族
     val race = "gnome"
-    val faction = when(race){
+    val faction = when (race) {
         "dwarf" -> "Keep of the Mines"
         "gnome" -> "Keep of the Mines"
         "orc" -> "Free People of the Rolling Hills"
@@ -30,12 +33,30 @@ fun main(args: Array<String>) {
         else -> ""
     }
 
+    //4.10 返回 Nothing 類型
+    fun shouldReturnAString(): String {
+        TODO("尚待實作")    //TODO 的返回類型是 Nothing
+        println("永遠不會執行此行")
+    }
+
+    //4.13 反引號中的函數名稱
+    fun doStuff() {
+        //從 Kotlin 調用 Java 的 is() 方法
+//        `is`()
+    }
+    fun `單元測試一：測試這個和那個`() {
+        //Do test
+    }
+    //呼叫此測試函數
+    `單元測試一：測試這個和那個`()
 }
 
-
-//丟火球
-private fun castFireball(numFireballs: Int = 2) =
+//4.15 丟火球
+private fun castFireball(numFireballs: Int = 2): Int {
     print("A glass of Fireball springs into existence. (x$numFireballs)")
+    val drunkRate: Int = (1..50).random()
+    return drunkRate
+}
 
 private fun printPlayerStatus(
     auraColor: String,
