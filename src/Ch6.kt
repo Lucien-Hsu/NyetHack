@@ -48,4 +48,14 @@ fun main(args: Array<String>){
         beverage6 = it.capitalize()
     } ?: println("beverage was null!")
 
+    //6.5
+
+
+
+
+
+
+
+
+
 }
