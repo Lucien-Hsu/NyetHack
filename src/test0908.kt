@@ -1,4 +1,5 @@
 fun main(){
+
     //給B()引數，所以會執行B()，因此印出"X"
     //B("X")執行完畢，回傳"(String) -> String"類型之lambda，
     // 然後println會將其印出
