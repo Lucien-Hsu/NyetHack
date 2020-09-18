@@ -1,27 +1,30 @@
 fun main(args: Array<String>) {
-    val name = "Madrigal"
+//    val name = "Madrigal"
     var healthPoints = 89
     val isBlessed = true    //是否走運
     val isImmortal = false  //是否永生
+
+    val player = Player()   //12.2 宣告玩家類別
+    player.castFireball()
 
     //Aura 光環
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
     //判定健康狀態
     val healStatus = formatHealthStatus(healthPoints, isBlessed)
     //印出玩家狀態
-    printPlayerStatus(auraColor, isBlessed, name, healStatus)
+    printPlayerStatus(auraColor, isBlessed, player.name, healStatus)
 
     //4.16 醉酒狀態報告
-    val drunkRate = castFireball()
-    val drunkType = when(drunkRate){
-        in 1..10 -> "tipsy"
-        in 11..20 -> "sloshed"
-        in 21..30 -> "soused"
-        in 31..40 -> "stewed"
-        in 41..50 -> "..t0aSt3d"
-        else -> "null"
-    }
-    println("\nDrunk Rate：" + drunkType)
+//    val drunkRate = castFireball()
+//    val drunkType = when(drunkRate){
+//        in 1..10 -> "tipsy"
+//        in 11..20 -> "sloshed"
+//        in 21..30 -> "soused"
+//        in 31..40 -> "stewed"
+//        in 41..50 -> "..t0aSt3d"
+//        else -> "null"
+//    }
+//    println("\nDrunk Rate：" + drunkType)
 
     //判斷種族
     val race = "gnome"
@@ -52,11 +55,11 @@ fun main(args: Array<String>) {
 }
 
 //4.15 丟火球
-private fun castFireball(numFireballs: Int = 2): Int {
-    print("A glass of Fireball springs into existence. (x$numFireballs)")
-    val drunkRate: Int = (1..50).random()
-    return drunkRate
-}
+//private fun castFireball(numFireballs: Int = 2): Int {
+//    print("A glass of Fireball springs into existence. (x$numFireballs)")
+//    val drunkRate: Int = (1..50).random()
+//    return drunkRate
+//}
 
 private fun printPlayerStatus(
     auraColor: String,
