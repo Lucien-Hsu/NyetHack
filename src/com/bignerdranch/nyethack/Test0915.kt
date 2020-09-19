@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 fun main(args: Array<String>) {
     //宣告List
     val myList: List<String> = listOf("Ann", "Bob", "Coco")

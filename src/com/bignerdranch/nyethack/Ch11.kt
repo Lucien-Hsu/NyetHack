@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 fun main(args: Array<String>) {
     //11.1
 //    //利用to函數宣告

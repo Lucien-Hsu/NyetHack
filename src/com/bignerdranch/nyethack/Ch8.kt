@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 import java.math.BigDecimal
 
 fun main(args: Array<String>) {

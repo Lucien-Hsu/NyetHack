@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 fun main(){
 
     //給B()引數，所以會執行B()，因此印出"X"

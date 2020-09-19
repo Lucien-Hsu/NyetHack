@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 fun main(args: Array<String>){
     //5.1
     //這裡的 .count() 是匿名函數
