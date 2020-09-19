@@ -5,19 +5,24 @@ package com.bignerdranch.nyethack//
 //    player.castFireball()   //使用類別函數
 //}
 
-
 //12 建立類別
-class Player {
+//13 建構函數
+class Player(
+    _name: String,
+    var healthPoints: Int,
+    val isBlessed: Boolean,
+    private val isImmortal: Boolean
+) {
     //12.5 建立類別屬性，需有初始值
-    var name = "madrigal"
+    var name = _name
         get() = field.capitalize()  //getter
         private set(value) {        //setter，並設定其可見性為private
             field = value.trim()
         }
 
-    var healthPoints = 89
-    val isBlessed = true    //是否走運
-    private val isImmortal = false  //是否永生
+//    var healthPoints = _healthPoints
+//    val isBlessed = _isBlessed    //是否走運
+//    private val isImmortal = _isImmortal  //是否永生
 
 //    val rolledValue                 //12.5.3 此為"計算屬性"，可以不初始化，也不產生field
 //        get() = (1..6).shuffled().first()

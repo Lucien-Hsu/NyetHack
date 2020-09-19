@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 //    val isBlessed = true    //是否走運
 //    val isImmortal = false  //是否永生
 
-    val player = Player()   //12.2 宣告玩家類別
+    val player = Player("Madrigal", 89, true, false)   //12.2 宣告玩家類別
     player.castFireball()
 
 //    //Aura 光環
