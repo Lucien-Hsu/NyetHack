@@ -1,4 +1,4 @@
-package com.bignerdranch.nyethack//
+package com.bignerdranch.nyethack
 //
 //fun main(args: Array<String>){
 //    val player = Player()   //宣告玩家類別
@@ -9,16 +9,34 @@ package com.bignerdranch.nyethack//
 //13 建構函數
 class Player(
     _name: String,
-    var healthPoints: Int,
+    var healthPoints: Int = 100,
     val isBlessed: Boolean,
     private val isImmortal: Boolean
 ) {
     //12.5 建立類別屬性，需有初始值
     var name = _name
-        get() = field.capitalize()  //getter
+        get() = "${field.capitalize()} of $homeTown"  //getter
         private set(value) {        //setter，並設定其可見性為private
             field = value.trim()
         }
+
+    val homeTown: String = ""
+
+    //13.1.3
+    //定義次建構函數
+    constructor(name: String) : this(
+        name,
+        isBlessed = true,   //此為具名引數，並提供預設參數
+        isImmortal = false  //此為具名引數，並提供預設參數
+    ) {
+        //可定義初始化邏輯
+        if (name.toLowerCase() == "kar") healthPoints = 40
+    }
+
+    init {
+        require(healthPoints > 0, {"healthPoints must be greater than zero."})
+        require(name.isNotBlank(), {"Player must have a name."})
+    }
 
 //    var healthPoints = _healthPoints
 //    val isBlessed = _isBlessed    //是否走運
