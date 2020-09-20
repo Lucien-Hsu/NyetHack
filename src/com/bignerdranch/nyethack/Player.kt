@@ -20,7 +20,7 @@ class Player(
             field = value.trim()
         }
 
-    val homeTown: String = ""
+    val homeTown by lazy { "" } //13.5.2
 
     //13.1.3
     //定義次建構函數

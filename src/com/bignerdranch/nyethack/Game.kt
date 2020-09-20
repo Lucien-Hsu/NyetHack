@@ -10,6 +10,11 @@ fun main(args: Array<String>) {
     val player = Player("Madrigal")   //12.2 宣告玩家類別
     player.castFireball()
 
+    //14.1
+    var currentRoom = Room("Foyer")
+    println(currentRoom.description())
+    println(currentRoom.load())
+
 //    //Aura 光環
 //    val auraColor = player.auraColor()
 //    //判定健康狀態
