@@ -8,10 +8,10 @@ fun main(args: Array<String>) {
 //    val isImmortal = false  //是否永生
 
     val player = Player("Madrigal")   //12.2 宣告玩家類別
-    player.castFireball()
+//    player.castFireball()
 
     //14.1
-    var currentRoom = Room("Foyer")
+    var currentRoom: Room = TownSquare()    //宣告為Room型態，故能儲存子類別TownSquare型態的實體
     println(currentRoom.description())
     println(currentRoom.load())
 
@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
 //    //判定健康狀態
 //    val healStatus = player.formatHealthStatus()
     //印出玩家狀態
-    printPlayerStatus(player)
+//    printPlayerStatus(player)
 
     //4.16 醉酒狀態報告
 //    val drunkRate = castFireball()
@@ -55,6 +55,7 @@ fun main(args: Array<String>) {
         //從 Kotlin 調用 Java 的 is() 方法
 //        `is`()
     }
+
     fun `單元測試一：測試這個和那個`() {
         //Do test
     }
