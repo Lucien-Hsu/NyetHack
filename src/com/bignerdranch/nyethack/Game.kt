@@ -14,6 +14,7 @@ fun main(args: Array<String>) {
     var currentRoom: Room = TownSquare()    //宣告為Room型態，故能儲存子類別TownSquare型態的實體
     println(currentRoom.description())
     println(currentRoom.load())
+    printIsSourceOfBlessings(player)
 
 //    //Aura 光環
 //    val auraColor = player.auraColor()
