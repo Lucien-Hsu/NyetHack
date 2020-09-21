@@ -102,3 +102,16 @@ private fun printPlayerStatus(
 //        in 15..74 -> "looks pretty hurt."
 //        else -> "is in awful condition!"
 //    }
+
+//14.4 類型轉換
+fun printIsSourceOfBlessings(any: Any){
+    val isSourceOfBlessings = if(any is Player){
+        //智慧類型轉換，因為已經在if判斷式中確認了any是Player型態
+        any.isBlessed
+    }else{
+        //類型轉換，將any的類型轉為Room
+        (any as Room).name == "Fount of Blessings"
+    }
+
+    println("$any is a source of blessings: $isSourceOfBlessings")
+}
