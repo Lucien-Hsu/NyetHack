@@ -2,26 +2,10 @@ package com.bignerdranch.nyethack
 
 fun main(args: Array<String>) {
 
-//    val name = "Madrigal"
-//    var healthPoints = 89
-//    val isBlessed = true    //是否走運
-//    val isImmortal = false  //是否永生
 
-    val player = Player("Madrigal")   //12.2 宣告玩家類別
-//    player.castFireball()
 
-    //14.1
-    var currentRoom: Room = TownSquare()    //宣告為Room型態，故能儲存子類別TownSquare型態的實體
-    println(currentRoom.description())
-    println(currentRoom.load())
-    printIsSourceOfBlessings(player)
-
-//    //Aura 光環
-//    val auraColor = player.auraColor()
-//    //判定健康狀態
-//    val healStatus = player.formatHealthStatus()
-    //印出玩家狀態
-//    printPlayerStatus(player)
+    //15.1.1
+    Game.play()
 
     //4.16 醉酒狀態報告
 //    val drunkRate = castFireball()
@@ -71,17 +55,7 @@ fun main(args: Array<String>) {
 //    return drunkRate
 //}
 
-private fun printPlayerStatus(
-    player: Player
-) {
-    //印出光環與走運狀況
-    println(
-        "(Auro: ${player.auraColor()})" +
-                "(Blessed: ${if (player.isBlessed) "YES" else "NO"})"
-    )
-    //印出健康狀態
-    println("${player.name} ${player.formatHealthStatus()}")
-}
+
 
 //private fun auraColor(isBlessed: Boolean, healthPoints: Int, isImmortal: Boolean): String {
 //    val auraVisible = isBlessed && healthPoints > 50 || isImmortal
@@ -105,14 +79,63 @@ private fun printPlayerStatus(
 //    }
 
 //14.4 類型轉換
-fun printIsSourceOfBlessings(any: Any){
-    val isSourceOfBlessings = if(any is Player){
+fun printIsSourceOfBlessings(any: Any) {
+    val isSourceOfBlessings = if (any is Player) {
         //智慧類型轉換，因為已經在if判斷式中確認了any是Player型態
         any.isBlessed
-    }else{
+    } else {
         //類型轉換，將any的類型轉為Room
         (any as Room).name == "Fount of Blessings"
     }
 
     println("$any is a source of blessings: $isSourceOfBlessings")
+}
+
+//15.1.1建立單例物件，會自動建立實體
+object Game {
+    private val player = Player("Madrigal")   //12.2 宣告玩家類別
+    val name = "Madrigal"
+    var healthPoints = 89
+    val isBlessed = true    //是否走運
+    val isImmortal = false  //是否永生
+
+    //Aura 光環
+    val auraColor = player.auraColor()
+    //判定健康狀態
+    val healStatus = player.formatHealthStatus()
+
+    //初始化
+    init {
+        println("Welcome, adventurer.")
+        player.castFireball()
+    }
+
+    fun play(){
+        while (true){
+            //14.1
+            var currentRoom: Room = TownSquare()    //宣告為Room型態，故能儲存子類別TownSquare型態的實體
+            println(currentRoom.description())
+            println(currentRoom.load())
+//            printIsSourceOfBlessings(player)
+
+            //印出玩家狀態
+            printPlayerStatus(player)
+
+            println("> Enter your command: ")
+            println("Last command: ${readLine()}")
+
+        }
+    }
+
+    private fun printPlayerStatus(
+        player: Player
+    ) {
+        //印出光環與走運狀況
+        println(
+            "(Auro: ${player.auraColor()})" +
+                    "(Blessed: ${if (player.isBlessed) "YES" else "NO"})"
+        )
+        //印出健康狀態
+        println("${player.name} ${player.formatHealthStatus()}")
+    }
 }
