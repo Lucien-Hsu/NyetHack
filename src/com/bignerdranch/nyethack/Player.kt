@@ -21,6 +21,7 @@ class Player(
         }
 
     val homeTown by lazy { "" } //13.5.2
+    var currentPosition = Coordinate(0, 0)
 
     //13.1.3
     //定義次建構函數

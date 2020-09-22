@@ -110,6 +110,20 @@ object Game {
         player.castFireball()
     }
 
+    //15.2 巢狀類別
+    private class GameInput(args: String?){
+        private val input = args ?: ""
+        val command = input.split(" ")[0]
+        //若分割出的字串陣列之第[1]個元素為空，則回傳空字串
+        val argument = input.split(" ").getOrElse(1, {""})
+
+        fun processCommand() = when(command.toLowerCase()){
+            else -> commandNotFound()
+        }
+
+        private fun commandNotFound() = "I'm not quite sure what you're trying to do!"
+    }
+
     fun play(){
         while (true){
             //14.1
@@ -122,8 +136,8 @@ object Game {
             printPlayerStatus(player)
 
             println("> Enter your command: ")
-            println("Last command: ${readLine()}")
-
+//            println("Last command: ${readLine()}")
+            println(GameInput(readLine()).processCommand())
         }
     }
 
