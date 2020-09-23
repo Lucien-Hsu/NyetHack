@@ -1,7 +1,8 @@
 package com.bignerdranch.nyethack
 
-fun main(args: Array<String>) {
+import java.lang.IllegalStateException
 
+fun main(args: Array<String>) {
 
 
     //15.1.1
@@ -56,7 +57,6 @@ fun main(args: Array<String>) {
 //}
 
 
-
 //private fun auraColor(isBlessed: Boolean, healthPoints: Int, isImmortal: Boolean): String {
 //    val auraVisible = isBlessed && healthPoints > 50 || isImmortal
 //    val auraColor = if (auraVisible) "GREEN" else "NONE"
@@ -94,6 +94,14 @@ fun printIsSourceOfBlessings(any: Any) {
 //15.1.1建立單例物件，會自動建立實體
 object Game {
     private val player = Player("Madrigal")   //12.2 宣告玩家類別
+    private var currentRoom: Room = TownSquare()    //初始地圖
+
+    //15.6
+    private var worldMap = listOf(
+        listOf(currentRoom, Room("Taverm"), Room("Black Room")),
+        listOf(Room("Long Corridor"), Room("Generic Room"))
+    )
+
     val name = "Madrigal"
     var healthPoints = 89
     val isBlessed = true    //是否走運
@@ -101,6 +109,7 @@ object Game {
 
     //Aura 光環
     val auraColor = player.auraColor()
+
     //判定健康狀態
     val healStatus = player.formatHealthStatus()
 
@@ -111,23 +120,25 @@ object Game {
     }
 
     //15.2 巢狀類別
-    private class GameInput(args: String?){
+    private class GameInput(args: String?) {
         private val input = args ?: ""
         val command = input.split(" ")[0]
-        //若分割出的字串陣列之第[1]個元素為空，則回傳空字串
-        val argument = input.split(" ").getOrElse(1, {""})
 
-        fun processCommand() = when(command.toLowerCase()){
+        //若分割出的字串陣列之第[1]個元素為空，則回傳空字串
+        val argument = input.split(" ").getOrElse(1, { "" })
+
+        fun processCommand() = when (command.toLowerCase()) {
+            //15.6
+            "move" -> move(argument)
             else -> commandNotFound()
         }
 
         private fun commandNotFound() = "I'm not quite sure what you're trying to do!"
     }
 
-    fun play(){
-        while (true){
+    fun play() {
+        while (true) {
             //14.1
-            var currentRoom: Room = TownSquare()    //宣告為Room型態，故能儲存子類別TownSquare型態的實體
             println(currentRoom.description())
             println(currentRoom.load())
 //            printIsSourceOfBlessings(player)
@@ -152,4 +163,24 @@ object Game {
         //印出健康狀態
         println("${player.name} ${player.formatHealthStatus()}")
     }
+
+    //15.6
+    private fun move(directionInput: String) =
+        try {
+            val direction = Direction.valueOf(directionInput.toUpperCase())         //取得使用這輸入方向之列舉常數
+            val newPosition = direction.updateCoordinate(player.currentPosition)    //取得移動後的位置
+            if (!newPosition.isInBounds){
+                throw IllegalStateException("$direction is out of bounds.")         //如果超出邊界則拋出異常
+            }
+            //實際更新當前位置與地圖
+            val newRoom = worldMap[newPosition.y][newPosition.x]    //若找不到符合的元素則拋出異常
+            player.currentPosition = newPosition
+            currentRoom = newRoom
+            "OK, you move $direction to the ${newRoom.name}.\n${newRoom.load()}"
+        }catch (e: Exception){
+            "Invalid direction: $directionInput"
+        }
+
+
+
 }
