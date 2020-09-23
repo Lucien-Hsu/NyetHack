@@ -96,6 +96,9 @@ object Game {
     private val player = Player("Madrigal")   //12.2 宣告玩家類別
     private var currentRoom: Room = TownSquare()    //初始地圖
 
+    //15.9 用來記錄遊戲是否終止
+    var doExit = false
+
     //15.6
     private var worldMap = listOf(
         listOf(currentRoom, Room("Taverm"), Room("Black Room")),
@@ -130,6 +133,8 @@ object Game {
         fun processCommand() = when (command.toLowerCase()) {
             //15.6
             "move" -> move(argument)
+            "quit" -> doExit()
+            "exit" -> doExit()
             else -> commandNotFound()
         }
 
@@ -149,6 +154,8 @@ object Game {
             println("> Enter your command: ")
 //            println("Last command: ${readLine()}")
             println(GameInput(readLine()).processCommand())
+            //15.9 跳出遊戲
+            if(doExit)break
         }
     }
 
@@ -181,6 +188,10 @@ object Game {
             "Invalid direction: $directionInput"
         }
 
+    private fun doExit(): String{
+        doExit = true
+        return "GAME OVER."
+    }
 
 
 }

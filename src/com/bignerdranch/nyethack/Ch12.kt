@@ -1,9 +1,9 @@
 package com.bignerdranch.nyethack
 
 //12.9 競態條件
-class Weapon(val name: String)
+class Weapon2(val name: String)
 class Player2{
-    var weapon: Weapon? = Weapon("Sword")
+    var weapon: Weapon2? = Weapon2("Sword")
 
     fun printWeaponName(){
         //此寫法會產生競態條件
