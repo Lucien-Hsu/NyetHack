@@ -20,7 +20,7 @@ class Player(
             field = value.trim()
         }
 
-    val homeTown by lazy { "" } //13.5.2
+    val homeTown by lazy { "Tampa" } //13.5.2
     var currentPosition = Coordinate(0, 0)
 
     //13.1.3

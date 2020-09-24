@@ -135,6 +135,7 @@ object Game {
             "move" -> move(argument)
             "quit" -> doExit()
             "exit" -> doExit()
+            "map" -> showMap(player)
             else -> commandNotFound()
         }
 
@@ -193,5 +194,19 @@ object Game {
         return "GAME OVER."
     }
 
+    //15.4
+    private fun showMap(player: Player){
+        val position = player.currentPosition
+        var visualMap = worldMap
 
+        visualMap.forEach(){
+            it.forEach(){
+                when(it){
+                    currentRoom -> print("X")
+                    else -> print("O")
+                }
+            }
+            println()
+        }
+    }
 }
