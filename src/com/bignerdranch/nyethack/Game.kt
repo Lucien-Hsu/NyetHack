@@ -136,6 +136,7 @@ object Game {
             "quit" -> doExit()
             "exit" -> doExit()
             "map" -> showMap(player)
+            "ring" -> ringing()
             else -> commandNotFound()
         }
 
@@ -194,7 +195,7 @@ object Game {
         return "GAME OVER."
     }
 
-    //15.4
+    //15.4 印地圖
     private fun showMap(player: Player){
         val position = player.currentPosition
         var visualMap = worldMap
@@ -209,4 +210,10 @@ object Game {
             println()
         }
     }
+
+    //15.11 搖鈴
+    private fun ringing() =
+        if(currentRoom.name == "Town Squere"){
+            (currentRoom as TownSquare).ringBell()
+        }else{""}
 }

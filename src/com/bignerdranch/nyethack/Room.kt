@@ -23,7 +23,7 @@ class TownSquare : Room("Town Squere") {
     //以final關鍵字禁止子類別覆寫
     final override fun load() = "The villagers rally and cheer as you enter!\n${ringBell()}"
 
-    private fun ringBell() = "The bell tower announces your arrival. $bellSound"
+    fun ringBell() = "The bell tower announces your arrival. $bellSound"
 }
 
 
