@@ -7,12 +7,27 @@ package com.bignerdranch.nyethack
 
 //12 建立類別
 //13 建構函數
+//16 介面
 class Player(
     _name: String,
-    var healthPoints: Int = 100,
+    override var healthPoints: Int = 100,
     val isBlessed: Boolean,
     private val isImmortal: Boolean
-) {
+) : Fightable{
+    //16.2 實作介面成員
+    override val diceCount = 3
+    override val diceSides = 6
+
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = if (isBlessed){
+            damageRoll * 2
+        }else{
+            damageRoll
+        }
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
+
     //12.5 建立類別屬性，需有初始值
     var name = _name
         get() = "${field.capitalize()} of $homeTown"  //getter
