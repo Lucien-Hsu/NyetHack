@@ -5,8 +5,11 @@ package com.bignerdranch.nyethack
 open class Room(val name: String) {
     //以protected關鍵字表示可以被繼承
     protected open val dangerLevel = 5
+    //16.5
+    var monster: Monster? = Goblin()
 
-    fun description() = "Room: $name" + "\nDanger Level: $dangerLevel"
+    fun description() = "Room: $name" + "\nDanger Level: $dangerLevel" +
+            "Creature: ${monster?.description ?: "none."}"
 
     //函數也要使用open關鍵字開放繼承
     open fun load() = "Nothing much to see here..."
