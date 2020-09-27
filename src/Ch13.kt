@@ -1,5 +1,3 @@
-package com.bignerdranch.nyethack
-
 class Player3{
     //延遲初始化
     lateinit var alignment: String

@@ -9,7 +9,7 @@ open class Room(val name: String) {
     var monster: Monster? = Goblin()
 
     fun description() = "Room: $name" + "\nDanger Level: $dangerLevel" +
-            "Creature: ${monster?.description ?: "none."}"
+            " Creature: ${monster?.description ?: "none."}"
 
     //函數也要使用open關鍵字開放繼承
     open fun load() = "Nothing much to see here..."

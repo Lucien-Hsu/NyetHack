@@ -1,5 +1,3 @@
-package com.bignerdranch.nyethack
-
 fun main(args: Array<String>) {
     val a = "aaa"
     //直接宣告時，若宣告字串的值已存在，則Kotlin會自動指向同一參照，所以必定為同物件

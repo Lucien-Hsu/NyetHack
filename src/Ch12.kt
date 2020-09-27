@@ -1,5 +1,3 @@
-package com.bignerdranch.nyethack
-
 //12.9 競態條件
 class Weapon2(val name: String)
 class Player2{
