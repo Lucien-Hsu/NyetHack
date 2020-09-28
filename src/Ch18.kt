@@ -8,6 +8,12 @@ fun <T> T.easyPrint(): T{
     return this
 }
 
+//擴充屬性
+val String.numVoewls
+    get() = count{"aeiou".contains(it)}
+
+
+
 fun main(args: Array<String>) {
     //使用String的擴充函數
     println("Hello".addEnthusiasm())
@@ -17,5 +23,7 @@ fun main(args: Array<String>) {
     886.easyPrint()
     //使用支援鍊式呼叫的函數
     "Hi~Hi~~~".easyPrint().addEnthusiasm(3).easyPrint()
+    //使用擴充屬性
+    "good!".numVoewls.easyPrint()
 
 }
