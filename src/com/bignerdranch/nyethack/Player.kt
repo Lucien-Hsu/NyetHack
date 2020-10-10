@@ -1,4 +1,7 @@
 package com.bignerdranch.nyethack
+
+import com.bignerdranch.nyethack.extensions.random as randomizer
+
 //
 //fun main(args: Array<String>){
 //    val player = Player()   //宣告玩家類別
@@ -58,8 +61,9 @@ class Player(
 //    val isBlessed = _isBlessed    //是否走運
 //    private val isImmortal = _isImmortal  //是否永生
 
-//    val rolledValue                 //12.5.3 此為"計算屬性"，可以不初始化，也不產生field
+    val rolledValue                 //12.5.3 此為"計算屬性"，可以不初始化，也不產生field
 //        get() = (1..6).shuffled().first()
+    get() = (1..6).randomizer()
 
     //12.3建立類別函數
     fun castFireball(numFireballs: Int = 2) =
