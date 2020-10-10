@@ -1,5 +1,6 @@
 //定義泛型類別
 //T是泛型參數通常採用的名稱
+//17.4 泛型約束，在此將T限制為Loot與其子類別型態
 class LootBox<T : Loot>(vararg item: T) {
     var open = false
     private var loot: Array<out T> = item
