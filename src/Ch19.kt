@@ -32,6 +32,8 @@ fun main(args: Array<String>) {
     }
     println("Final value: $foldedValue")
 
-
+    //generateSequence
+    generateSequence(0) { it + 1 }
+        .onEach { println("$it hi~") }
 }
 
