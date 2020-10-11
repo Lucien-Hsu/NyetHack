@@ -97,6 +97,8 @@ object Game {
     private val player = Player("Madrigal")   //12.2 宣告玩家類別
     private var currentRoom: Room = TownSquare()    //初始地圖
 
+
+
     //15.9 用來記錄遊戲是否終止
     var doExit = false
 
@@ -121,6 +123,12 @@ object Game {
     init {
         println("Welcome, adventurer.")
         player.castFireball()
+
+        //18.10 利用帶接收者的擴充函數來設定地窖哥布林
+        currentRoom.configurePitGoblin { goblin ->
+            goblin.healthPoints = dangerLevel * 3
+            goblin
+        }
     }
 
     //15.2 巢狀類別

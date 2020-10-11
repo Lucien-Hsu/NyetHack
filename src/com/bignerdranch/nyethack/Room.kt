@@ -4,7 +4,7 @@ package com.bignerdranch.nyethack
 //使用open關鍵字開放繼承
 open class Room(val name: String) {
     //以protected關鍵字表示可以被繼承
-    protected open val dangerLevel = 5
+    open val dangerLevel = 5
     //16.5
     var monster: Monster? = Goblin()
 

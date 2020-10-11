@@ -101,15 +101,32 @@ private fun placeOrder3(menuData: String) {
     val (type, name, price) = menuData.split(',')
 
     val phrase = "Ah, delicious $name!"
-    val message = "Madrigal exclaims:${toDragonSpeak(phrase)}"
+//    val message = "Madrigal exclaims:${toDragonSpeak(phrase)}"
+    //18.11 改寫為擴充函數
+    val message = "Madrigal exclaims:${phrase.toDragonSpeak()}"
     println(message)
 }
+
+////7.2
+////replace有兩個參數
+////第一個參數用的Regex包含要替換的字元，這裡包含五個字元，第二個參數以匿名函數指定要替換成什麼字元
+//private fun toDragonSpeak(phrase: String) =
+//    phrase.replace(Regex("[aeiou]")) {
+//        when (it.value) {
+//            "a" -> "4"
+//            "e" -> "3"
+//            "i" -> "1"
+//            "o" -> "0"
+//            "u" -> "|_|"
+//            else -> it.value
+//        }
+//}
 
 //7.2
 //replace有兩個參數
 //第一個參數用的Regex包含要替換的字元，這裡包含五個字元，第二個參數以匿名函數指定要替換成什麼字元
-private fun toDragonSpeak(phrase: String) =
-    phrase.replace(Regex("[aeiou]")) {
+private fun String.toDragonSpeak() =
+    this.replace(Regex("[aeiou]")) {
         when (it.value) {
             "a" -> "4"
             "e" -> "3"
@@ -118,7 +135,5 @@ private fun toDragonSpeak(phrase: String) =
             "u" -> "|_|"
             else -> it.value
         }
-}
-
-
+    }
 
