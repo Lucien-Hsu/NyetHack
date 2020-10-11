@@ -12,8 +12,6 @@ fun <T> T.easyPrint(): T{
 val String.numVoewls
     get() = count{"aeiou".contains(it)}
 
-
-
 fun main(args: Array<String>) {
     //使用String的擴充函數
     println("Hello".addEnthusiasm())
@@ -33,7 +31,4 @@ fun main(args: Array<String>) {
     nullableString printWithDefault "Default String"
     //若未使用 infix 關鍵字則需寫成這樣
     nullableString.printWithDefault("Default String")
-
-
-
 }
