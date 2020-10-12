@@ -2,6 +2,9 @@ package com.bignerdranch.nyethack
 
 const val TAVERN_NAME = "Taernyl's Folly"
 
+//19.7
+val uniquePatrons = mutableSetOf<String>()
+
 fun main(args: Array<String>) {
 //    //6.4.1
 //    //讀入引數並印出
@@ -60,6 +63,28 @@ fun main(args: Array<String>) {
 
     //7.2
     placeOrder3("shandy,Dragon's Breath,5.91")
+
+    //19.7
+    val patronList = listOf<String>("Ann", "Bob", "Cathy", "David", "Frank")
+    val lastName = listOf<String>("D.", "A.", "X.", "S.", "L.")
+    (0..9).forEach{
+        val first = patronList.random()
+        val last = lastName.random()
+        val name = "$first $last"
+        uniquePatrons += name
+    }
+    //優化
+    val uniquePatrons: Set<String> = generateSequence {
+        //隨機取得first name
+        val first = patronList.random()
+        //隨機取得last name
+        val last = lastName.random()
+        //組合為字串回傳
+        "$first $last"
+    }.take(10).toSet()
+
+    println("19.7:" + uniquePatrons)
+
 }
 
 //7.1.1
